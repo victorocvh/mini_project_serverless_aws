@@ -1,4 +1,5 @@
 variable "stack_base_name" {
-  type    = string
-  default = "dev"
+  description = "Variavel global que define a stack (DEV,PROD,HOMOL)"
+  type        = string
+  default     = "dev"
 }
