@@ -2,7 +2,7 @@
 
 data "archive_file" "usersfn_lambda_zip" {
   type        = "zip"
-  output_path = "/tmp/usersfunctions_lambda.zip"
+  output_path = "./tmp/usersfunctions_lambda.zip"
   source_file = "${path.module}/../../src/users/lambda_function.py"
 }
 
@@ -67,7 +67,9 @@ resource "aws_lambda_function" "users_lambda" {
   runtime       = "python3.11"
 
   source_code_hash = data.archive_file.usersfn_lambda_zip.output_base64sha256
-
+  tracing_config {
+    mode = "Active"
+  }
   environment {
     variables = {
       USERS_TABLE = "${var.input_users_table_id}"
