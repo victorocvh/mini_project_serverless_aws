@@ -60,7 +60,7 @@ resource "aws_iam_role_policy_attachment" "users_lambda" {
 resource "aws_lambda_function" "users_lambda" {
   function_name = "${var.stack_base_name}_user_lambda"
   filename      = data.archive_file.usersfn_lambda_zip.output_path
-  description   = "All users operation (GET,POST,UPDATE,DELETE)"
+  description   = "Rota que faz o CRUD para os usuários (GET,POST,UPDATE,DELETE)"
   role          = aws_iam_role.users_lambda.arn
   handler       = "lambda_function.lambda_handler"
   architectures = ["x86_64"]
