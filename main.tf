@@ -18,3 +18,8 @@ module "module_api" {
   input_lambda_invoke_arn    = module.module_lambda.lambda_invoke_arn
   input_lambda_function_name = module.module_lambda.lambda_function_name
 }
+
+module "module_cognito" {
+  source          = "./terraform/module_cognito"
+  stack_base_name = var.stack_base_name
+}
