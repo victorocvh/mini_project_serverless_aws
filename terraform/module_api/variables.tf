@@ -4,6 +4,10 @@ variable "stack_base_name" {
   default = "dev"
 }
 
+variable "user_pool_admin_group_name" {
+  default = "dev_AdminGroupName"
+}
+
 variable "input_lambda_invoke_arn" {
   type        = string
   description = "Lambda URL that will be called by api-gateway."

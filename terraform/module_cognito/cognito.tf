@@ -49,6 +49,14 @@ resource "aws_cognito_user_pool_client" "cognito" {
   prevent_user_existence_errors = "ENABLED"
   enable_token_revocation       = true
 
+  callback_urls = ["http://localhost"]
+  logout_urls   = ["http://localhost"]
+
+  allowed_oauth_flows_user_pool_client = true
+  allowed_oauth_flows                  = ["code"]
+  allowed_oauth_scopes                 = ["email", "openid"]
+
+
 }
 
 resource "aws_cognito_user_pool_domain" "cognito" {

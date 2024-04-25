@@ -12,7 +12,7 @@ output "user_pool_admin_group" {
 }
 
 output "cognito_login_url" {
-  value = "https://${aws_cognito_user_pool_domain.cognito.domain}.auth.us-east-1.amazoncognito.com"
+  value = "https://${aws_cognito_user_pool_client.cognito.id}.auth.us-east-1.amazoncognito.com/login?client_id=${aws_cognito_user_pool_client.cognito.id}&response_type=code&redirect_uri=http://localhost"
 }
 
 output "cognito_login_auth_command" {
