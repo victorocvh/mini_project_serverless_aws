@@ -7,13 +7,15 @@ Este projeto implementa uma arquitetura básica de autorização e authenticaç�
 
 # Como foi organizado o projeto ?
 
-<div style="display: flex;">
-<div style="flex: 50%;">
-    <img src="./assets/folders_estrutura.png" alt="Estrutura de pastas do projeto">
-    </div>
-    <div style="flex: 50%;">
-        <p>Acima nós temos a estrutura de pastas do projeto.</p>
-    </div>  
-</div>
 
+<table style="border: 0" width="100%">
+  <tr>
+    <td style="border:0; vertical-align: top;" >
+      <img src="./assets/folders_estrutura.png" alt="Estrutura de pastas do projeto">
+    </td>
+    <td style="border:0; vertical-align: top; text-align: left;">
+      Na pasta \`src\` nós temos
+    </td>
+  </tr>
+</table>
 
