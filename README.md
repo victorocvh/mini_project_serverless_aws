@@ -14,7 +14,8 @@ Este projeto implementa uma arquitetura básica de autorização e authenticaç�
       <img src="./assets/folders_estrutura.png" alt="Estrutura de pastas do projeto">
     </td>
     <td style="border:0; vertical-align: top; text-align: left;">
-      Na pasta \`src\` nós temos
+      ASSETS/: contêm todas as imagens do projeto.
+      main.tf: gerencia
     </td>
   </tr>
 </table>
