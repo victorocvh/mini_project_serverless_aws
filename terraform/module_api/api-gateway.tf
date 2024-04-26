@@ -7,6 +7,21 @@ resource "aws_api_gateway_rest_api" "rest_api" {
       title   = "Users Crud"
       version = "1.0"
     }
+    components = {
+      securitySchemes = {
+        lambdaTokenAuthorizer = {
+          type                         = "apiKey"
+          name                         = "Authorization"
+          in                           = "header"
+          x-amazon-apigateway-authtype = "custom"
+          x-amazon-apigateway-authorizer = {
+            authorizerUri                = var.input_lambda_authorizer_arn
+            authorizerResultTtlInSeconds = 300
+            type                         = "token"
+          }
+        }
+      }
+    }
     paths = {
       "/users" = {
         get = {
@@ -26,6 +41,11 @@ resource "aws_api_gateway_rest_api" "rest_api" {
       },
       "/users/{userid}" = {
         put = {
+          security = [
+            {
+              "lambdaTokenAuthorizer" : []
+            }
+          ]
           x-amazon-apigateway-integration = {
             httpMethod = "POST"
             type       = "aws_proxy"
@@ -33,6 +53,11 @@ resource "aws_api_gateway_rest_api" "rest_api" {
           }
         },
         get = {
+          security = [
+            {
+              "lambdaTokenAuthorizer" : []
+            }
+          ]
           x-amazon-apigateway-integration = {
             httpMethod = "POST"
             type       = "aws_proxy"
@@ -40,6 +65,11 @@ resource "aws_api_gateway_rest_api" "rest_api" {
           }
         },
         delete = {
+          security = [
+            {
+              "lambdaTokenAuthorizer" : []
+            }
+          ]
           x-amazon-apigateway-integration = {
             httpMethod = "POST"
             type       = "aws_proxy"
@@ -78,6 +108,14 @@ resource "aws_lambda_permission" "allow_apigateway" {
   statement_id  = "AllowFromApiGateway"
   action        = "lambda:InvokeFunction"
   function_name = var.input_lambda_function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.rest_api.execution_arn}/*"
+}
+
+resource "aws_lambda_permission" "allow_apigateway_auth" {
+  statement_id  = "AllowFromApiGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = var.input_lambda_authorizer_function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.rest_api.execution_arn}/*"
 }

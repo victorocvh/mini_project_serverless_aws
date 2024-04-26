@@ -14,6 +14,14 @@ def dynamo_to_python(dynamo_object: dict) -> dict:
     }
 
 
+def python_to_dynamo(python_object: dict) -> dict:
+    serializer = TypeSerializer()
+    return {
+        k: serializer.serialize(v)
+        for k, v in python_object.items()
+    }
+
+
 def get_user(dynamodb_client: any, table_name: str, userid: str):
     return dynamodb_client.get_item(
         TableName=table_name,
@@ -77,13 +85,13 @@ def lambda_handler(event, context):
                            event['pathParameters']['userid'])
 
     if (event['httpMethod'] == 'PUT' and event['pathParameters']['userid']):
-        updatedItem = event['body']
+        updatedItem = json.loads(event['body'])
         updatedItem['timestamp'] = datetime.now().isoformat()
         updatedItem['userid'] = event['pathParameters']['userid']
         updatedItem = python_to_dynamo(updatedItem)
         body = update_item(dynamodb, table_name, updatedItem)
     if (event['httpMethod'] == 'POST'):
-        newItem = event['body']
+        newItem = json.loads(event['body'])
         newItem['timestamp'] = datetime.now().isoformat()
         newItem["userid"] = str(uuid.uuid4())
         newItem = python_to_dynamo(newItem)

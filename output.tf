@@ -23,6 +23,9 @@ output "module_api_invoke_url" {
   value = module.module_api.stage_invoke_url
 }
 
+output "module_api_gateway_rest_api_id" {
+  value = module.module_api.aws_api_gateway_rest_api_id
+}
 
 # Modulo Cognito 
 

@@ -17,3 +17,13 @@ variable "input_lambda_function_name" {
   type        = string
   description = "Lambda Name that will be called by api-gateway"
 }
+
+variable "input_lambda_authorizer_arn" {
+  type        = string
+  description = "ARN para o Authorizer Lambda."
+}
+
+variable "input_lambda_authorizer_function_name" {
+  type        = string
+  description = "Function Name for API Gateway Authorizer!"
+}
