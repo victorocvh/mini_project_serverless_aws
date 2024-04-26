@@ -15,11 +15,11 @@ Este projeto implementa uma arquitetura básica de autorização e authenticaç�
     </td>
     <td style="border:0; vertical-align: top; text-align: left;">
       <strong>assets/:</strong> contêm todas as imagens do projeto.</br></br>
-      main.tf: gerencia os módulos terraform</br></br>
+      <strong>main.tf:</strong> gerencia os módulos terraform que ficam na pasta terraform</br></br>
       <strong>Makefile:</strong> automatiza alguns scripts</br></br>
-      <strong>output.tf:</strong> recebe todas as saidas dos módulos</br></br>
-      <strong>src/:</strong> contêm os lambdas, suas funções, e seus pacotes.</br></br>
-      <strong>terraform/:</strong> contêm todos os módulos que cria cada recursos
+      <strong>output.tf:</strong> recebe todas as saidas dos módulos terraform</br></br>
+      <strong>src/:</strong> contêm as funções lambdas e seus pacotes.</br></br>
+      <strong>terraform/:</strong> contêm todos os módulos que cria cada recurso
     </td>
   </tr>
 </table>
