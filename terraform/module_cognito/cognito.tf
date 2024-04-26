@@ -70,3 +70,20 @@ resource "aws_cognito_user_group" "cognito" {
   description  = "Grupo de usuários para administradores da API!"
   precedence   = 0
 }
+
+resource "aws_cognito_user" "cognito_user" {
+  user_pool_id = aws_cognito_user_pool.cognito.id
+  username     = "victor.ocv@hotmail.com"
+  password     = "admin@123M"
+
+  attributes = {
+    email          = "victor.ocv@hotmail.com"
+    email_verified = true
+  }
+}
+
+resource "aws_cognito_user_in_group" "cognito_user_in_admin_group" {
+  user_pool_id = aws_cognito_user_pool.cognito.id
+  group_name   = aws_cognito_user_group.cognito.name
+  username     = aws_cognito_user.cognito_user.username
+}

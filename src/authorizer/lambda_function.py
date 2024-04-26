@@ -88,6 +88,7 @@ def lambda_handler(event, context):
     policy.allow_method(HttpVerb.GET, f"/users/{principal_id}")
     policy.allow_method(HttpVerb.PUT, f"/users/{principal_id}")
     policy.allow_method(HttpVerb.DELETE, f"/users/{principal_id}")
+    policy.allow_method(HttpVerb.POST, f"/users/")
     policy.allow_method(HttpVerb.GET, f"/users/{principal_id}/*")
     policy.allow_method(HttpVerb.PUT, f"/users/{principal_id}/*")
     policy.allow_method(HttpVerb.DELETE, f"/users/{principal_id}/*")
@@ -103,6 +104,7 @@ def lambda_handler(event, context):
         policy.allow_method(HttpVerb.DELETE, "users/*")
         policy.allow_method(HttpVerb.PUT, "users")
         policy.allow_method(HttpVerb.PUT, "users/*")
+        policy.allow_method(HttpVerb.POST, "users/*")
 
     # Finally, build the policy
     auth_response = policy.build()
@@ -196,9 +198,3 @@ class AuthPolicy:
 
         print(policy)  # opcional: apenas para depuração
         return policy
-
-
-if (__name__ == "__main__"):
-    lambda_handler({'type': 'TOKEN',
-                    'methodArn': 'arn:aws:execute-api:us-east-1:767398079178:wiz9wyxlfg/ESTestInvoke-stage/GET/',
-                    'authorizationToken': 'eyJraWQiOiJIZ1hBOEpPZ05ObVUwcXh1Rm9Ec0ZxUDlHUlRtNzNEYXRiQ3p4blZ0dEJFPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI1NGM4MzQwOC1iMDUxLTcwMTAtMTE1MS1iNTlkZWZkOGEwYjUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfYmlhY29acGJNIiwiY29nbml0bzp1c2VybmFtZSI6IjU0YzgzNDA4LWIwNTEtNzAxMC0xMTUxLWI1OWRlZmQ4YTBiNSIsIm9yaWdpbl9qdGkiOiIwYzA4MGEyOC1hN2YyLTRmZjMtOTUwMS03NDM4ZmZmMGI1NzkiLCJhdWQiOiI0MzFkMWMyMDQyZDJocHZjYTFsczI4dW41bSIsImV2ZW50X2lkIjoiNTQ1M2YxMmYtODMyZC00MmViLWIwMjAtMDQ3YzMwYjExZjIyIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MTQwNzgwMzcsIm5hbWUiOiJWaWN0b3IgQ2FydmFsaG8iLCJleHAiOjE3MTQwODE2MzYsImlhdCI6MTcxNDA3ODAzNywianRpIjoiMDE5ZDI3ZWItOWNhOS00ZjNkLWFiZTgtYjkzNzExNzNmMmZjIiwiZW1haWwiOiJ2aWN0b3Iub2N2QGhvdG1haWwuY29tIn0.VLBc5CeeXH6-YFD-yPNaTYNUoUV4bEhk0Y43E1tgEoG4v8Z_jH2S6fmuMBRvp2_Xf6Ex3ulUW5ZXj9hFVxgce7rucEkSPN7T0AaUHAHXt4zylNF0ZALq5gS4kPnYo7XVKRbe2VRzhBb1Ydi4ZyqnVB1YZx5n3PhItbsZCprb-zmIH07ePottEGERBkG9PneDTbaIok_JbKtLgewt4rvsOHnDlRTlc3v8k3-1lkW_QKg5mVotz8uTHIKKzACIzqYEoN5jGdcB2GTen4iomOjeBmdfhcRWjTy7vQPkFYAE2m2ddurx582ovFXuzzFpRibjq4Xxb_63Ls7ex-ldGOIG9w'}, None)

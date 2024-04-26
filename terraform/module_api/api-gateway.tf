@@ -25,13 +25,23 @@ resource "aws_api_gateway_rest_api" "rest_api" {
     paths = {
       "/users" = {
         get = {
+          security = [
+            {
+              "lambdaTokenAuthorizer" : []
+            }
+          ]
           x-amazon-apigateway-integration = {
             httpMethod = "POST"
             type       = "aws_proxy"
             uri        = "${var.input_lambda_invoke_arn}"
           }
         }
-        put = {
+        post = {
+          security = [
+            {
+              "lambdaTokenAuthorizer" : []
+            }
+          ]
           x-amazon-apigateway-integration = {
             httpMethod = "POST"
             type       = "aws_proxy"

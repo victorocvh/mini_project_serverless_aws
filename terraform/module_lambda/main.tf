@@ -2,7 +2,7 @@
 
 data "archive_file" "usersfn_lambda_zip" {
   type        = "zip"
-  output_path = "./tmp/usersfunctions_lambda.zip"
+  output_path = "${path.module}/../../src/users/package.zip"
   source_file = "${path.module}/../../src/users/lambda_function.py"
 }
 
