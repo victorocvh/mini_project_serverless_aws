@@ -3,7 +3,7 @@
 
 ![Texto alternativo da imagem](./assets/arquitetura1.png)
 
-Este projeto implementa uma arquitetura básica de autorização e authenticação aws. Serverless totalmente gerenciada, que pode escalar para milhares de usuários de maneira bem tranquila!
+Este projeto implementa uma arquitetura básica de autorização e autenticação aws. Serverless totalmente gerenciada, que pode escalar para milhares de usuários de maneira bem tranquila!
 
 # Como foi organizado o projeto ?
 
@@ -24,3 +24,20 @@ Este projeto implementa uma arquitetura básica de autorização e authenticaç�
   </tr>
 </table>
 
+# Configurações necessárias
+
+1 - Certifique-se de ter o AWS CLI instalado, no meu caso utilizei a versão.
+    
+    aws-cli/2.15.25
+
+2 - A maioria dos comandos do Makefile foi feito para Linux/Ubuntu pois usa rm, zip. Se você não usa WSL ou Linux, terá que rodar alguns comandos na mão para testar a aplicação.
+
+3 - Você precisa ter o terraform instalado! Aqui utilizei ele na versão:
+
+    Terraform v1.7.5
+
+# Como rodar o projeto ?
+
+1 - Depois de clonar o projeto e configurar o aws cli para sua conta da aws, você pode visualizar o que será feito através do comando:
+
+    terraform plan
