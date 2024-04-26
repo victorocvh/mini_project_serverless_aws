@@ -1,4 +1,7 @@
-# mini_project_serverless_aws
-Projeto simples! Subindo um api gateway, lambda e uma tabela do dynamodb! 
+# Projeto autenticação / autorização aws
+## Arquitetura implementada
+
+![Texto alternativo da imagem](./assets/arquitetura1.png)
+
 
 

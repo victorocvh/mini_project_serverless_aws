@@ -73,11 +73,11 @@ resource "aws_cognito_user_group" "cognito" {
 
 resource "aws_cognito_user" "cognito_user" {
   user_pool_id = aws_cognito_user_pool.cognito.id
-  username     = "victor.ocv@hotmail.com"
+  username     = "admin-noreply@testadmin.com"
   password     = "admin@123M"
 
   attributes = {
-    email          = "victor.ocv@hotmail.com"
+    email          = "admin-noreply@testadmin.com"
     email_verified = true
   }
 }
