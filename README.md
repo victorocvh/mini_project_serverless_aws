@@ -38,6 +38,50 @@ Este projeto implementa uma arquitetura básica de autorização e autenticaçã
 
 # Como rodar o projeto ?
 
-1 - Depois de clonar o projeto e configurar o aws cli para sua conta da aws, você pode visualizar o que será feito através do comando:
+`1` - Depois de clonar o projeto e configurar o aws cli para sua conta da aws, você precisa rodar o terraform e os módulos com o comando:
+
+    terraform init
+
+Você deverá ver como saida: 
+![alt text](./assets/image.png)
+
+`2` - Você pode ver o que está vai ser criado com o comando: 
 
     terraform plan
+
+`3` - E para aplicar na cloud você usa o comando: 
+
+    terraform apply
+
+Após aplicar na cloud você deverá ver como saida :
+![alt text](./assets/image-1.png)
+
+PRONTO! VOCÊ SUBIU A INFRA NA AWS! Agora está na hora de testar
+
+# Como testar a aplicação !
+
+`1`: Dentro do cognito é criado um usuário administrador que consegue atingir todas as rotas, com ele podemos gerar um token que nos permitirá cadastrar novos usuários no sistema.
+
+`2`: Visualize o usuário no cognito:
+
+![alt text](image.png)
+
+`3`: Digite no terminal o comando:
+
+    terraform output | grep module_cognito
+    
+Como saída você deverá ver:
+![alt text](image-1.png)
+Guarde esse client_id!
+
+`4`: Agora vamos gerar um token, use o comando:
+
+    make generate-cognito-token cli=CLIENT_ID_AQUI
+
+Coloque o client_id que você pegou da saida do terraform, e substitua por `CLIENT_ID_AQUI`, após digitar isso no terminal você verá o surgimento de uma pasta `tmp` com um arquivo token.json
+
+Print abaixo:
+![alt text](image-2.png)
+
+`5`: Copie o token `Idtoken` que será utilizado para interagir com as apis!
+

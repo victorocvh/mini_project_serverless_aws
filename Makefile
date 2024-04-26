@@ -11,8 +11,24 @@ generate-authorizer-package:
 
 
 generate-cognito-token:
+	mkdir tmp
 	aws cognito-idp initiate-auth --auth-flow USER_PASSWORD_AUTH \
 	--client-id $(cli) --region us-east-1 --auth-parameters \
 	USERNAME=admin-noreply@testadmin.com,PASSWORD=admin@123M > ./tmp/token.json
 
 .PHONY: generate-cognito-token
+
+
+
+# REQUESTS
+
+http-post:
+	curl --location "$(url)" \
+	--request POST \
+	--header 'Content-Type: application/json' \
+	--header 'Authorization: $(token)' \
+	--data '{"name": "User Test", "content": "navigator", "endereços": "tellme", "telefone": 123456}'
+
+
+
+.PHONY: http-post
