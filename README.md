@@ -17,7 +17,7 @@ Este projeto implementa uma arquitetura básica de autorização e authenticaç�
       ```ASSETS/:``` contêm todas as imagens do projeto.</br></br>
       main.tf: gerencia os módulos terraform</br></br>
       Makefile: automatiza alguns scripts</br></br>
-      <span style="background-color: yellow;">output:</span> recebe todas as saidas dos módulos</br></br>
+      **output:** recebe todas as saidas dos módulos</br></br>
       src: contêm os lambdas, suas funções, e seus pacotes.</br></br>
       terraform/: contêm todos os módulos que cria cada recursos
     </td>
