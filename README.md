@@ -14,10 +14,10 @@ Este projeto implementa uma arquitetura básica de autorização e authenticaç�
       <img src="./assets/folders_estrutura.png" alt="Estrutura de pastas do projeto">
     </td>
     <td style="border:0; vertical-align: top; text-align: left;">
-      ```ASSETS/:``` contêm todas as imagens do projeto.</br></br>
+      <strong>assets/:</strong> contêm todas as imagens do projeto.</br></br>
       main.tf: gerencia os módulos terraform</br></br>
       Makefile: automatiza alguns scripts</br></br>
-      **output:** recebe todas as saidas dos módulos</br></br>
+      output: recebe todas as saidas dos módulos</br></br>
       src: contêm os lambdas, suas funções, e seus pacotes.</br></br>
       terraform/: contêm todos os módulos que cria cada recursos
     </td>
